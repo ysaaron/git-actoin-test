@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Just echo
-        run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+        run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event. {{ secrets.MY_SECRET }}"
       - name: Conditional pull_request test
         if: github.event.pull_request.merged == false
         run: echo "Hi pull_request it is"
