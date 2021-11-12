@@ -7,10 +7,10 @@ jobs:
       - name: Just echo
         run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - name: Conditional pull_request test
-        if: github.event_name == "pull_request"
+        if: github.event_name == 'pull_request'
         run: echo "Hi pull_request it is"
       - name: Conditional pull test
-        if: github.event_name == "pull"
+        if: github.event_name == 'pull'
         run: echo "Hi pull it is"
       - name: End echo
         run: echo "End echo"
