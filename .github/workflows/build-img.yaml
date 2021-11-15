@@ -1,0 +1,22 @@
+name: Build and Publish
+
+on: [push]
+#  push:
+#    branches: [main]
+#  pull_request:
+
+jobs:
+  build-and-push-docker-image:
+    name: Build Docker image and push to repositories
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: build and push image
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_ID }}
+          password: ${{ secrets.DOCKER_PWD }}
+          repository: hot55797700/mydockertest
+          dockerfile: Dockerfile
+          tags: latest
