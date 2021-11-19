@@ -63,10 +63,10 @@ jobs:
           - 9001:9001
     steps:
       - name: check-api-response
-        run: curl "http://localhost:9001/time"
-      - run: curl "http://localhost:9001/time"
-      - run: curl "http://localhost:9001/time"
-      - run: curl "http://localhost:9001/time"
+        run: curl "http://api:9001/time"
+      - run: curl "http://api:9001/time"
+      - run: curl "http://api:9001/time"
+      - run: curl "http://api:9001/time"
       - run: curl "http://api:9001/time"
       - name: check-ssr-response
         run: curl "http://localhost:3000"
