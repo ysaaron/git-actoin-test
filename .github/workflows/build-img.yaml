@@ -69,6 +69,6 @@ jobs:
       - run: curl "http://api:9001/time"
       - run: curl "http://api:9001/time"
       - name: check-ssr-response
-        run: curl "http://localhost:3000"
+        run: curl "http://ssr:3000"
       - name: Again ssr
-        run: curl "http://localhost:3000"
+        run: curl "http://ssr:3000"
