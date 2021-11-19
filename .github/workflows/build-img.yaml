@@ -58,6 +58,8 @@ jobs:
           - 3000:3000
     steps:
       - name: check-ssr-response
-        run: curl "http://ssr:3000"
+        run: curl "http://localhost:3000"
       - name: check-api-response
-        run: curl "http://api:9001/time"
+        run: curl "http://localhost:9001/time"
+      - name: Again ssr
+        run: curl "http://localhost:3000"
