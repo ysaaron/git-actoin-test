@@ -58,3 +58,5 @@ jobs:
     steps:
       - name: check-ssr-response
         run: curl "http://localhost:3000"
+      - name: check-api-response
+        run: curl "http://localhost:9001/time"
