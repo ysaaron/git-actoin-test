@@ -8,7 +8,7 @@
 <script>
 export default {
   fetch() {
-    return fetch(`http://localhost:${process.env.API_SERVER_PORT}/time`).then(res => {
+    return fetch(`http://api:${process.env.API_SERVER_PORT}/time`).then(res => {
       return res.json()
     }).then(data => {
       console.log(data)
