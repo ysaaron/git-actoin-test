@@ -43,27 +43,30 @@ jobs:
     needs: build-and-push-docker-image
     runs-on: ubuntu-latest
     services:
-      api:
-        image: hot55797700/api-test
-        env:
-          PORT: 9001
-        ports:
-          - 9001:9001
-#        options: "-health-cmd=\"curl --silent --fail localhost:3000/health || exit 1\" --health-interval=5s --health-retries=12 --health-timeout=2s"
       ssr:
         image: hot55797700/ssr-test
         env:
           API_SERVER_PORT: 9001
         ports:
           - 3000:3000
-        options: >-
-          --health-cmd="node ./healthcheck.js" \
-          --health-interval=5s \
-          --health-retries=12 \
-          --health-timeout=2s
+#        options: >-
+#          --health-cmd="node ./healthcheck.js" \
+#          --health-interval=5s \
+#          --health-retries=12 \
+#          --health-timeout=2s
+      api:
+        image: hot55797700/api-test
+        env:
+          PORT: 9001
+        ports:
+          - 9001:9001
     steps:
       - name: check-api-response
         run: curl "http://localhost:9001/time"
+      - run: curl "http://localhost:9001/time"
+      - run: curl "http://localhost:9001/time"
+      - run: curl "http://localhost:9001/time"
+      - run: curl "http://localhost:9001/time"
       - name: check-ssr-response
         run: curl "http://localhost:3000"
       - name: Again ssr
