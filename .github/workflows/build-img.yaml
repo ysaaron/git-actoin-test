@@ -42,7 +42,7 @@ jobs:
   test-services:
     needs: build-and-push-docker-image
     runs-on: ubuntu-latest
-    container: ubuntu
+    container: node:17-stretch
     services:
       ssr:
         image: hot55797700/ssr-test
