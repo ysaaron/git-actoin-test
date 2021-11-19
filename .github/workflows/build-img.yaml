@@ -49,13 +49,15 @@ jobs:
           PORT: 9001
         ports:
           - 9001:9001
+        options: "--name api"
       ssr:
         image: hot55797700/ssr-test
         env:
-          API_SERVER_HOST: api
+          API_SERVER_HOST: 0.0.0.0
           API_SERVER_PORT: 9001
         ports:
           - 3000:3000
+        options: "--name ssr --net=container:api"
     steps:
       - name: check-ssr-response
         run: curl "http://localhost:3000"
