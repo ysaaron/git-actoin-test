@@ -1,5 +1,5 @@
 const CONTENT_JSON = { 'Content-Type': 'application/json' }
-const OK_RES = JSON.stringify({ statusCode: 200, message: 'ok' })
+const OK_RES = JSON.stringify({ Health: { Status: 'healthy' }, statusCode: 200, message: 'ok' })
 
 const heathHandler = (req, res) => {
     res.writeHead(200, CONTENT_JSON)
