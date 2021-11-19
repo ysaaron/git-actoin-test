@@ -9,6 +9,11 @@ app.get('/time', (req, res) => {
     }))
 })
 
+app.get('/health', (req, res) => {
+    res.writeHead(200, { contentType: 'application/json' })
+    res.end('ok')
+})
+
 const server = app.listen(PORT, () => {
     const host = server.address().address;
     const port = server.address().port;
