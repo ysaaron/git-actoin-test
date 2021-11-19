@@ -56,7 +56,7 @@ jobs:
           API_SERVER_PORT: 9001
         ports:
           - 3000:3000
-        options: "--health-cmd=\"curl --silent --fail https://localhost:3000/health || exit 1\" --health-interval=5s --health-retries=12 --health-timeout=2s"
+        options: "--health-cmd=\"curl -f https://localhost:3000/ || exit 1\" --health-interval=5s --health-retries=12 --health-timeout=2s"
     steps:
       - name: check-api-response
         run: curl "http://localhost:9001/time"
