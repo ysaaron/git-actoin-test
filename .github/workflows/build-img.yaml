@@ -49,17 +49,18 @@ jobs:
           PORT: 9001
         ports:
           - 9001:9001
+#        options: "-health-cmd=\"curl --silent --fail localhost:3000/health || exit 1\" --health-interval=5s --health-retries=12 --health-timeout=2s"
       ssr:
         image: hot55797700/ssr-test
         env:
-          API_SERVER_HOST: api
           API_SERVER_PORT: 9001
         ports:
           - 3000:3000
+#        options: "-health-cmd=\"curl --silent --fail localhost:9001/health || exit 1\" --health-interval=5s --health-retries=12 --health-timeout=2s"
     steps:
-      - name: check-ssr-response
-        run: curl "http://localhost:3000"
       - name: check-api-response
         run: curl "http://localhost:9001/time"
+      - name: check-ssr-response
+        run: curl "http://localhost:3000"
       - name: Again ssr
         run: curl "http://localhost:3000"
