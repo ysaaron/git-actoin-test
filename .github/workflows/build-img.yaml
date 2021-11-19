@@ -42,6 +42,7 @@ jobs:
   test-services:
     needs: build-and-push-docker-image
     runs-on: ubuntu-latest
+    container: ubuntu
     services:
       ssr:
         image: hot55797700/ssr-test
