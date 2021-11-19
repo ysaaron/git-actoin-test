@@ -16,9 +16,8 @@ RUN yarn cache clean && rm -rf node_modules && \
 
 FROM node:16-alpine3.13
 ENV NODE_ENV $NODE_ENV
-ENV NUXT_HOST "0.0.0.0"
-ENV API_SERVER_PORT $API_SERVER_PORT
+ENV PORT $PORT
 WORKDIR /app
 COPY --from=base /app .
 WORKDIR /app
-CMD ["yarn", "run", "start"]
+CMD ["yarn", "run", "start-api-server"]
