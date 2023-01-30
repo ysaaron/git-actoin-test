@@ -16,26 +16,28 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.14"
-      - name: Install dependencies
-        run: yarn
-      - name: Build ssr
-        run: yarn run build
-      - name: build and push image
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_ID }}
-          password: ${{ secrets.DOCKER_PWD }}
-          repository: hot55797700/ssr-test
-          dockerfile: Dockerfile
-          tags: latest
-      - name: build and push api image
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_ID }}
-          password: ${{ secrets.DOCKER_PWD }}
-          repository: hot55797700/api-test
-          dockerfile: api.dockerfile
-          tags: latest
+      - name: Echo current workdir
+        run: echo $(pwd)
+      # - name: Install dependencies
+      #   run: yarn
+      # - name: Build ssr
+      #   run: yarn run build
+      # - name: build and push image
+      #   uses: docker/build-push-action@v1
+      #   with:
+      #     username: ${{ secrets.DOCKER_ID }}
+      #     password: ${{ secrets.DOCKER_PWD }}
+      #     repository: hot55797700/ssr-test
+      #     dockerfile: Dockerfile
+      #     tags: latest
+      # - name: build and push api image
+      #   uses: docker/build-push-action@v1
+      #   with:
+      #     username: ${{ secrets.DOCKER_ID }}
+      #     password: ${{ secrets.DOCKER_PWD }}
+      #     repository: hot55797700/api-test
+      #     dockerfile: api.dockerfile
+      #     tags: latest
       - name: Just echo
         run: echo "Workflow end"
 

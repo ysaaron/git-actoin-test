@@ -1,6 +1,6 @@
 FROM debian:stable-slim as base
 
-ARG GITHUB_RUNNER_VERSION="2.300.2"
+ARG GITHUB_RUNNER_VERSION="2.301.1"
 
 WORKDIR /github
 
@@ -38,6 +38,7 @@ RUN apt-get update && \
         docker-ce \
         docker-ce-cli \
         containerd.io \
-        docker-compose-plugin
+        docker-compose-plugin \
+        yarn
 
 ENTRYPOINT ["./entrypoint.sh"]
