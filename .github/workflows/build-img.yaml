@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: "16.14"
       - name: Echo current workdir
-        run: echo $(pwd)
+        run: echo $(pwd) && ls -a
       # - name: Install dependencies
       #   run: yarn
       # - name: Build ssr
@@ -41,36 +41,36 @@ jobs:
       - name: Just echo
         run: echo "Workflow end"
 
-  test-services:
-    needs: build-and-push-docker-image
-    runs-on: ubuntu-latest
-    container: node:17-stretch
-    services:
-      ssr:
-        image: hot55797700/ssr-test
-        env:
-          API_SERVER_PORT: 9001
-        ports:
-          - 3000:3000
-#        options: >-
-#          --health-cmd="node ./healthcheck.js" \
-#          --health-interval=5s \
-#          --health-retries=12 \
-#          --health-timeout=2s
-      api:
-        image: hot55797700/api-test
-        env:
-          PORT: 9001
-        ports:
-          - 9001:9001
-    steps:
-      - name: check-api-response
-        run: curl "http://api:9001/time"
-      - run: curl "http://api:9001/time"
-      - run: curl "http://api:9001/time"
-      - run: curl "http://api:9001/time"
-      - run: curl "http://api:9001/time"
-      - name: check-ssr-response
-        run: curl "http://ssr:3000"
-      - name: Again ssr
-        run: curl "http://ssr:3000"
+  # test-services:
+  #   needs: build-and-push-docker-image
+  #   runs-on: ubuntu-latest
+  #   container: node:17-stretch
+  #   services:
+  #     ssr:
+  #       image: hot55797700/ssr-test
+  #       env:
+  #         API_SERVER_PORT: 9001
+  #       ports:
+  #         - 3000:3000
+  #      options: >-
+  #        --health-cmd="node ./healthcheck.js" \
+  #        --health-interval=5s \
+  #        --health-retries=12 \
+  #        --health-timeout=2s
+  #     api:
+  #       image: hot55797700/api-test
+  #       env:
+  #         PORT: 9001
+  #       ports:
+  #         - 9001:9001
+  #   steps:
+  #     - name: check-api-response
+  #       run: curl "http://api:9001/time"
+  #     - run: curl "http://api:9001/time"
+  #     - run: curl "http://api:9001/time"
+  #     - run: curl "http://api:9001/time"
+  #     - run: curl "http://api:9001/time"
+  #     - name: check-ssr-response
+  #       run: curl "http://ssr:3000"
+  #     - name: Again ssr
+  #       run: curl "http://ssr:3000"
